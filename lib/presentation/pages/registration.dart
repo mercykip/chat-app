@@ -1,5 +1,6 @@
 import 'package:chatting_app/application/themes/style.dart';
 import 'package:chatting_app/presentation/pages/chart.dart';
+import 'package:chatting_app/presentation/pages/login.dart';
 import 'package:chatting_app/presentation/widgets/widgets.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -47,11 +48,32 @@ class _RegistrationState extends State<Registration> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
-              Hero(
-                tag: 'logo',
-                child: Container(
-                  height: 200.0,
-                  child: Image.asset('assets/images/logo.png'),
+              Flexible(
+                child: Hero(
+                  tag: 'logo',
+                  child: Container(
+                    // height: 200.0,
+                    child: Row(
+                      children: [
+                        Expanded(
+                          child: Image.asset(
+                            'assets/images/logo.png',
+                          ),
+                        ),
+                        Expanded(
+                          child: Text(
+                            'Create a Flash Chat Account',
+                            style: TextStyle(
+                              fontSize: 40.0,
+                              color: Colors.blue,
+                              fontWeight: FontWeight.w500,
+                              decoration: TextDecoration.none,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
                 ),
               ),
               SizedBox(
@@ -94,6 +116,13 @@ class _RegistrationState extends State<Registration> {
                 },
                 color: Colors.lightBlueAccent,
               ),
+              InkWell(
+                child: Text('Already have an account? Sign In ',
+                    textAlign: TextAlign.right),
+                onTap: () {
+                  Navigator.pushNamed(context, Login.id);
+                },
+              )
             ],
           ),
         ),
